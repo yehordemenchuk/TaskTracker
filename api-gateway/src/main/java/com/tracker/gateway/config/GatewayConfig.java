@@ -35,13 +35,13 @@ public class GatewayConfig {
                                 ).uri("lb://habitTrackerService")
                 )
                 .route("ai_recommendation_service",
-                        r -> r.path("/api/v1/recommend/**")
+                        r -> r.path("/api/v1/ai/**")
                                 .filters(
                                         f ->
                                                 f.circuitBreaker(c ->
                                                         c.setName("aiRecommendationServiceCB")
                                                                 .setFallbackUri(FALLBACK_URL))
-                                ).uri("lb://aiRecommendationService")
+                                ).uri("lb://ai-recommendation-service")
                 )
                 .route("analytics_service",
                         r -> r.path("/api/v1/analytics/**")

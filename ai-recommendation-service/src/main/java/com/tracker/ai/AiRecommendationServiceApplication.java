@@ -1,4 +1,4 @@
-package com.tracker.gateway;
+package com.tracker.ai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ApiGatewayApplication {
-
+public class AiRecommendationServiceApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayApplication.class, args);
+		SpringApplication.run(AiRecommendationServiceApplication.class, args);
+
+		System.out.println();
 	}
 
 }

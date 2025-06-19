@@ -19,6 +19,8 @@ repositories {
 
 extra["springCloudVersion"] = "2024.0.1"
 
+val webFluxVersion = "2.8.4"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -31,8 +33,9 @@ dependencies {
 
 	implementation("org.springframework.kafka:spring-kafka")
 
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:2.8.4")
-	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.4")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-api:$webFluxVersion")
+	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:$webFluxVersion")
+
 
 	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
 
