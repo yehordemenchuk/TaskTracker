@@ -27,11 +27,15 @@ extra["springCloudVersion"] = "2025.0.0"
 
 val okhttpVersion = "4.9.3"
 val gsonVersion = "2.8.9"
+val mapstructVersion = "1.5.5.Final"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("org.springframework.kafka:spring-kafka")
+	implementation("org.mapstruct:mapstruct:$mapstructVersion")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+	annotationProcessor("org.mapstruct:mapstruct-processor:$mapstructVersion")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

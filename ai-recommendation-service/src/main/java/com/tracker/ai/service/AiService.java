@@ -14,8 +14,8 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class AiService {
-    private OkHttpClient client = new OkHttpClient();
-    private Gson gson = new Gson();
+    private final OkHttpClient client = new OkHttpClient();
+    private final Gson gson = new Gson();
     private final Map<String, String> aiApiConfig;
 
     private void fillRequestBody(JsonObject requestBody, String prompt) {

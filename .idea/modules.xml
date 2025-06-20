@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TaskTracker.iml" filepath="$PROJECT_DIR$/.idea/TaskTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ai-recommendation-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ai-recommendation-service.main.iml" />
     </modules>
   </component>
 </project>
