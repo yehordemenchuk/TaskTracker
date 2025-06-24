@@ -60,6 +60,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.BAD_REQUEST, details), status);
     }
 
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handleEntityNotFoundException(EntityNotFoundException e,
+                                                                      WebRequest webRequest) {
+        return handleException(e, webRequest, HttpStatus.BAD_REQUEST, Map.of());
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleOtherExceptions(Exception e, WebRequest webRequest) {
         return handleException(e, webRequest, HttpStatus.INTERNAL_SERVER_ERROR, Map.of());

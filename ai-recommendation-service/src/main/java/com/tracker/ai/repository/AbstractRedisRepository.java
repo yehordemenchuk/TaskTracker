@@ -1,5 +1,6 @@
 package com.tracker.ai.repository;
 
+import com.tracker.ai.exceptions.EntityNotFoundException;
 import lombok.Getter;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -56,7 +57,7 @@ public abstract class AbstractRedisRepository<T> implements RedisRepository<T> {
     }
 
     @Override
-    public T findById(Long id) throws IllegalStateException {
+    public T findById(Long id) throws IllegalStateException, EntityNotFoundException {
         Object obj = redisTemplate.opsForValue().get(prefix + id);
 
         if (clazz != null && clazz.isInstance(obj)) {
@@ -65,6 +66,6 @@ public abstract class AbstractRedisRepository<T> implements RedisRepository<T> {
             throw new IllegalStateException();
         }
 
-        return null;
+        throw new EntityNotFoundException();
     }
 }
