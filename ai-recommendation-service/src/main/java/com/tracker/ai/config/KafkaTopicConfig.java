@@ -6,23 +6,27 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class KafkaTopicConfig {
+    private NewTopic createTopic(String name) {
+        return new NewTopic(name, 3, (short) 1);
+    }
+
     @Bean
     public NewTopic habitUpdationTopic() {
-        return new NewTopic("habit-updation", 3, (short) 1);
+        return createTopic("habit-updation");
     }
 
     @Bean
     public NewTopic habitDeletionTopic() {
-        return new NewTopic("habit-deletion", 3, (short) 1);
+        return createTopic("habit-deletion");
     }
 
     @Bean
     public NewTopic userUpdationTopic() {
-        return new NewTopic("user-updation", 3, (short) 1);
+        return createTopic("user-updation");
     }
 
     @Bean
     public NewTopic recommendationTopic() {
-        return new NewTopic("recommendation", 3, (short) 1);
+        return createTopic("recommendation");
     }
 }
