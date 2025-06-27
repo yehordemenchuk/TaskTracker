@@ -20,8 +20,7 @@ public class RecommendationListener {
         List<String> deviceTokens = recommendationDto.userDto().deviceTokens();
 
         for (String deviceToken : deviceTokens) {
-            pushNotificationService.sendNotification(deviceToken, "Recommendation for you",
-                    recommendationDto.recommendation());
+            pushNotificationService.sendNotification(deviceToken, "Recommendation for you", recommendationDto.recommendation());
         }
     }
 }
