@@ -1,6 +1,5 @@
 package com.tracker.ai.controller;
 
-import com.tracker.ai.service.AiService;
 import com.tracker.ai.service.RecommendationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

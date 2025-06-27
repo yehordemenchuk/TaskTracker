@@ -1,4 +1,4 @@
-package com.tracker.ai.dto;
+package com.tracker.notification.dto;
 
 import java.util.List;
 
