@@ -1,8 +1,6 @@
-package com.tracker.ai.config;
+package com.tracker.notification.config;
 
-import com.tracker.ai.dto.UserDto;
-import com.tracker.ai.event.HabitDeletedEvent;
-import com.tracker.ai.event.HabitSentEvent;
+import com.tracker.notification.dto.RecommendationDto;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,32 +56,12 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, HabitSentEvent> habitDtoConsumerFactory() {
-        return consumerFactory(HabitSentEvent.class);
+    public ConsumerFactory<String, RecommendationDto> userDtoConsumerFactory() {
+        return consumerFactory(RecommendationDto.class);
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, HabitSentEvent>> kafkaListenerContainerFactoryHabitSentEvent(ConsumerFactory<String, HabitSentEvent> consumerFactory) {
-        return kafkaListenerContainerFactory(consumerFactory);
-    }
-
-    @Bean
-    public ConsumerFactory<String, HabitDeletedEvent> habitDeletedEventConsumerFactory() {
-        return consumerFactory(HabitDeletedEvent.class);
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, HabitDeletedEvent>> kafkaListenerContainerFactoryHabitDeletedEvent(ConsumerFactory<String, HabitDeletedEvent> consumerFactory) {
-        return kafkaListenerContainerFactory(consumerFactory);
-    }
-
-    @Bean
-    public ConsumerFactory<String, UserDto> userDtoConsumerFactory() {
-        return consumerFactory(UserDto.class);
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, UserDto>> kafkaListenerContainerFactoryUserDto(ConsumerFactory<String, UserDto> consumerFactory) {
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, RecommendationDto>> kafkaListenerContainerFactoryUserDto(ConsumerFactory<String, RecommendationDto> consumerFactory) {
         return kafkaListenerContainerFactory(consumerFactory);
     }
 }

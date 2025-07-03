@@ -1,5 +1,7 @@
 package com.tracker.ai.sender;
 
+import com.tracker.ai.dto.RecommendationDto;
+import com.tracker.ai.dto.UserDto;
 import com.tracker.ai.service.RecommendationService;
 import com.tracker.ai.service.UserService;
 import jakarta.annotation.PostConstruct;
@@ -17,7 +19,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 @Getter
 public class RecommendationSender {
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, RecommendationDto> kafkaTemplate;
     private final RecommendationService recommendationService;
     private final UserService userService;
     private final Random random = new Random();
@@ -34,9 +36,10 @@ public class RecommendationSender {
     @Scheduled(cron = "#{@recommendationSender.getCurrentCron()}")
     public void sendRecommendation() throws IOException {
         long id = userService.getRandomUserId();
+        UserDto userDto = userService.getById(id);
 
         String recommendation = recommendationService.getShortRecommendation(id);
 
-        kafkaTemplate.send(TOPIC, recommendation);
+        kafkaTemplate.send(TOPIC, new RecommendationDto(userDto, recommendation));
     }
 }
