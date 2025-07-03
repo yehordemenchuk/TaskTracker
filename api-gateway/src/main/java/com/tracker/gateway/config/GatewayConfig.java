@@ -23,7 +23,7 @@ public class GatewayConfig {
                                                 f.circuitBreaker(c ->
                                                         c.setName("userServiceCB")
                                                                 .setFallbackUri(FALLBACK_URL))
-                                ).uri("lb://userService")
+                                ).uri("lb://user-service")
                 )
                 .route("habit_tracker_service",
                         r -> r.path("/api/v1/habits/**")
@@ -32,7 +32,7 @@ public class GatewayConfig {
                                                 f.circuitBreaker(c ->
                                                         c.setName("habitTrackerServiceCB")
                                                                 .setFallbackUri(FALLBACK_URL))
-                                ).uri("lb://habitTrackerService")
+                                ).uri("lb://habit-tracker-service")
                 )
                 .route("ai_recommendation_service",
                         r -> r.path("/api/v1/ai/**")
@@ -50,7 +50,7 @@ public class GatewayConfig {
                                                 f.circuitBreaker(c ->
                                                         c.setName("analyticsServiceCB")
                                                                 .setFallbackUri(FALLBACK_URL))
-                                ).uri("lb://analyticsService")
+                                ).uri("lb://analytics-service")
                 )
                 .route("notification_service",
                         r -> r.path("/api/v1/notify/**")
@@ -59,7 +59,7 @@ public class GatewayConfig {
                                                 f.circuitBreaker(c ->
                                                         c.setName("notificationServiceCB")
                                                                 .setFallbackUri(FALLBACK_URL))
-                                ).uri("lb://notificationService")
+                                ).uri("lb://notification-service")
                 )
                 .build();
     }
